@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>CDN Dinamic</title>
+</head>
+<body>
+    <datalist id="categories">
+    </datalist>
+    <section>
+        <ul>
+            {% for c in cats%}
+            <li><a href="/{{c.key()}}">{{c.name}}</a></li>
+            <script type="text/javascript">
+                document.querySelector("#categories").innerHTML += "<option value='{{c.name}}'>"
+            </script>
+            {% endfor %}
+        </ul>
+    </section>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <div><input type="file" name="file"></div>
+        <div>
+            <textarea name="description" placeholder="Descripción"></textarea>
+        </div>
+        <div><input type="text" name="category" placeholder="Categoria" list="categories" autocomplete="off"></div>
+        <div><input type="submit" value="Subir"></div>
+
+    </form>
+</body>
+</html>

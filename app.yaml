@@ -1,0 +1,17 @@
+application: ttcdnstatic
+version: tt
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: /.*
+  script: cdn1._wsgi
+
+libraries:
+- name: jinja2
+  version: latest

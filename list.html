@@ -1,0 +1,37 @@
+<html>
+<head>
+    <title></title>
+    <style>
+        figure{
+            display: inline-block;
+            width: 210px;
+        }
+    </style>
+</head>
+<body>
+    <h1><a href="/">Ir atrás</a> {{category.name}}</h1>
+    <section>
+        {% for image in category.images %}
+        <figure>
+            <img src="/i/{{image.key()}}" width="200">
+            <figcaption>
+                {{image.description}} - {{image.date}}
+                <div>
+                    <input class="url-img" key-img="{{image.key()}}">
+                </div>
+            </figcaption>
+        </figure>
+        {% endfor%}
+    </section>
+    <script>
+        window.addEventListener("load", function(){
+            [].forEach.call(document.querySelectorAll('.url-img'), function(el) {
+                el.value = document.location.origin+'/i/'+el.getAttribute("key-img")
+                el.addEventListener("click", function(){
+                    el.select()
+                })
+            });
+        })
+    </script>
+</body>
+</html>
