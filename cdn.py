@@ -51,9 +51,6 @@ class ServeHandler(webapp2.RequestHandler):
 
 class ServeImageHandler(webapp2.RequestHandler):
     def get(self, key):
-        # image = db.get(key)
-        # im = image.blob
-
         im = self.get_img(key)
         if im:
             self.response.headers['Content-Type'] = "image/png"
